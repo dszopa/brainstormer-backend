@@ -1,9 +1,9 @@
-package com.brainstormer.controller;
+package spring.starter.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
-import com.brainstormer.entity.User;
-import com.brainstormer.repository.UserRepository;
+import spring.starter.entity.User;
+import spring.starter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 

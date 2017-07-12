@@ -1,4 +1,4 @@
-package com.brainstormer.config.test;
+package spring.starter.config.test;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +44,7 @@ public class TestDataSourceConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.brainstormer");
+        factory.setPackagesToScan("spring.starter");
         factory.setDataSource(dataSource());
         factory.afterPropertiesSet();
 

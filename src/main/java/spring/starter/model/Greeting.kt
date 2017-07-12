@@ -1,3 +1,3 @@
-package com.brainstormer.model
+package spring.starter.model
 
 class Greeting(val id: Long, val content: String)

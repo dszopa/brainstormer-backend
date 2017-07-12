@@ -1,7 +1,7 @@
-package com.brainstormer.service;
+package spring.starter.service;
 
-import com.brainstormer.entity.User;
-import com.brainstormer.repository.UserRepository;
+import spring.starter.entity.User;
+import spring.starter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

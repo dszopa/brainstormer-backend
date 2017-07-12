@@ -1,6 +1,6 @@
-package com.brainstormer.config.prod;
+package spring.starter.config.prod;
 
-import com.brainstormer.service.CustomUserDetailsService;
+import spring.starter.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;

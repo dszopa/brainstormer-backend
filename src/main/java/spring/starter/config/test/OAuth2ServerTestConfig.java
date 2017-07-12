@@ -1,7 +1,7 @@
-package com.brainstormer.config.prod;
+package spring.starter.config.test;
 
 
-import com.brainstormer.service.CustomUserDetailsService;
+import spring.starter.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -27,12 +27,12 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import javax.sql.DataSource;
 
 @Configuration
-@Profile("prod")
-public class OAuth2ServerProdConfig {
+@Profile("test")
+public class OAuth2ServerTestConfig {
 
-    private static final String RESOURCE_ID = "brainstormer_backend";
+    private static final String RESOURCE_ID = "spring_starter_backend";
 
-    @Profile("prod")
+    @Profile("test")
     @Configuration
     @EnableResourceServer
     protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
@@ -53,13 +53,16 @@ public class OAuth2ServerProdConfig {
         public void configure(HttpSecurity http) throws Exception {
             // @formatter:off
             http
+                    .headers().frameOptions().sameOrigin()
+                    .and()
                     .authorizeRequests()
+                    .antMatchers("/console/**").permitAll()
                     .antMatchers("/**").fullyAuthenticated();
             // @formatter:on
         }
     }
 
-    @Profile("prod")
+    @Profile("test")
     @Configuration
     @EnableAuthorizationServer
     protected static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
@@ -111,19 +114,23 @@ public class OAuth2ServerProdConfig {
             clients
                     .jdbc(dataSource)
                     .passwordEncoder(passwordEncoder())
-                    .withClient("brainstormer_mobile")
+                    .withClient("spring_starter_mobile")
                         .authorizedGrantTypes("password", "refresh_token")
                         .authorities("USER")
                         .scopes("read", "write")
                         .resourceIds(RESOURCE_ID)
-                        .secret("bsm_secret")
+                        .secret("m_secret")
+                        .accessTokenValiditySeconds(0)
+                        .refreshTokenValiditySeconds(0)
                     .and()
-                    .withClient("brainstormer_web_frontend")
+                    .withClient("spring_starter_web_frontend")
                         .authorizedGrantTypes("password", "refresh_token")
                         .authorities("USER")
                         .scopes("read", "write")
                         .resourceIds(RESOURCE_ID)
-                        .secret("bswf_secret");
+                        .secret("wf_secret")
+                        .accessTokenValiditySeconds(0)
+                        .refreshTokenValiditySeconds(0);
             // @formatter:on
         }
     }

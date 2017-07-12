@@ -1,4 +1,4 @@
-package com.brainstormer.config.prod;
+package spring.starter.config.prod;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +31,7 @@ public class DataSourceConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.brainstormer");
+        factory.setPackagesToScan("spring.starter");
         factory.setDataSource(dataSource);
         factory.afterPropertiesSet();
 

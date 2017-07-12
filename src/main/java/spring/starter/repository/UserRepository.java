@@ -1,6 +1,6 @@
-package com.brainstormer.repository;
+package spring.starter.repository;
 
-import com.brainstormer.entity.User;
+import spring.starter.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
